@@ -1,21 +1,23 @@
 package org.stepdef;
 
+
 import io.cucumber.java.*;
+import org.utils.ReportingManager;
 
 public class Hooks {
 
-
+Scenario scenario;
 
     @BeforeAll
     public static void featureCheckIn()
     {
-     System.out.println("featureCheckIn");
+     ReportingManager.intializeReport();
     }
 
     @Before
-    public static void scenarioCheckIn()
+    public void scenarioCheckIn(Scenario scenario)
     {
-        System.out.println("scenarioCheckIn");
+        String scenarioName = scenario.getName();
     }
 
     @BeforeStep
@@ -42,7 +44,7 @@ public class Hooks {
     @AfterAll
     public static void featureCheckOut()
     {
-        System.out.println("featureCheckOut");
+       ReportingManager.flushReport();
     }
 
 }
