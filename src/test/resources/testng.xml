@@ -1,16 +1,17 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="MySuite">
-    <parameter name="browser" value="chrome"/>
+    <parameter name="userName" value="chrome@gmail.com"/>
+    <parameter name="password" value="123345"/>
 
     <test name="LoginTests">
+        <groups>
+            <run>
+                <include name="regression2"/>
+            </run>
+        </groups>
         <classes>
             <class name="org.stepdef.Test1">
-                <methods>
-                    <include name="check"/>
-                    <include name="check1"/>
-                    <include name="check3"/>
 
-                </methods>
             </class>
 
         </classes>

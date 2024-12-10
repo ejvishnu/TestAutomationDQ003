@@ -1,9 +1,9 @@
 package org.stepdef;
 
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 
 public class Test1 {
 
@@ -12,44 +12,63 @@ public class Test1 {
     @Test(groups = {"regression1"})
 
     public void check(String browser, String url) {
-        ChromeDriver driver = new ChromeDriver();
+        // ChromeDriver driver = new ChromeDriver();
         System.out.println(browser + url);
     }
 
+
+    @Parameters({"userName", "password"})
+    @Test(groups = {"regression2"})
+
+    public void login(String userName, String password) {
+
+
+        System.out.println("username is " + userName);
+        System.out.println("password is " + password);
+    }
+
+
+    @Parameters({"browser"})
     @Test(groups = {"regression"})
-    public void check1() {
-        ChromeDriver driver = new ChromeDriver();
+    public void check1(String jsbcjsk) {
+        //ChromeDriver driver = new ChromeDriver();
 
     }
 
     @Test(groups = {"regression"})
     public void check2() {
-        ChromeDriver driver = new ChromeDriver();
+        //ChromeDriver driver = new ChromeDriver();
     }
 
+    @Parameters({"browser"})
     @Test
-    public void check3() {
-        ChromeDriver driver = new ChromeDriver();
+    public void check3(String data) {
+
+        System.out.println(data);
+
+
     }
 
     @Test
     public void check4() {
-        ChromeDriver driver = new ChromeDriver();
+        //ChromeDriver driver = new ChromeDriver();
+        System.out.println(Thread.currentThread());
     }
 
 
-    @DataProvider(name = "testData")
+    @DataProvider(name = "loginCreds")
     public Object[][] provideData() {
         return new Object[][]{
-                {"Alice", 25},  // Row 1
-                {"Bob", 30},    // Row 2
-                {"Charlie", 35} // Row 3
+                {"username@gmail.com", "12425235"},  // Row 1
+                {"username@gmail2.com", "12425235"},    // Row 2
+                {"username@gmail3.com", "12425235"} // Row 3
         };
     }
 
 
-    @Test(dataProvider = "testData")
-    public void testWithDataProvider(String name, int age) {
-        System.out.println("Name: " + name + ", Age: " + age);
+    @Test(dataProvider = "loginCreds")
+    public void loginIntoApp(String name, String password) {
+        System.out.println("Name: " + name + ", password: " + password);
+
     }
 }
