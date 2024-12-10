@@ -6,7 +6,7 @@ Feature: Login
 
     Then user enters user name and password
 
-
+  @regression
   Scenario: scenaro2
 
     Then user enters user name and password

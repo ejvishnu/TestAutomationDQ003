@@ -1,11 +1,9 @@
 package org.stepdef;
 
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.plugin.event.Node;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -45,7 +43,7 @@ public class loginStepDef {
     @Test
     public void test()
     {
-        System.out.println("load13rrt");
+        System.out.println("load13rrtgfgdfvgf");
     }
 
     @And("User enters age as {int}")

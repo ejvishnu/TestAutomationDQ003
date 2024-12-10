@@ -19,6 +19,10 @@ public class ScreenShotManager {
         this.driver = driver;
     }
 
+    public static String captureScreenshotAsBase64() {
+        return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
+    }
+
     // Capture screenshot and save it with a timestamp
     public String captureScreenshot(String screenshotName) {
         // Generate timestamp for unique file names
@@ -37,6 +41,7 @@ public class ScreenShotManager {
             System.out.println("Failed to save screenshot: " + e.getMessage());
         }
 
-        return filePath; // Return the file path for reporting purposes
+        return filePath;
+        // Return the file path for reporting purposes
     }
 }

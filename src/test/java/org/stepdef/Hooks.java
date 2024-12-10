@@ -1,31 +1,43 @@
 package org.stepdef;
 
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import io.cucumber.java.*;
+import org.utils.DriverManager;
 import org.utils.ReportingManager;
+import org.utils.ScreenShotManager;
 
 public class Hooks {
 
-
+    public static ExtentTest test;
     @BeforeAll
     public static void featureCheckIn() {
         System.out.println("featureIn");
         ReportingManager.intializeReport();
     }
 
-    @BeforeStep
-    public static void stepCheckIn() {
-        System.out.println("stepCheckIn");
-    }
+    String scenarioName;
 
     @AfterStep
     public static void stepCheckOut() {
         System.out.println("stepCheckOut");
     }
 
+    @BeforeStep
+    public static void stepCheckIn() {
+
+
+    }
+
     @After
-    public static void scenarioCheckOut() {
-        System.out.println("scenarioCheckOut");
+    public void scenarioCheckOut(Scenario scenario) {
+        if (scenario.isFailed()) {
+            new ScreenShotManager(DriverManager.getDriver()).captureScreenshot(scenarioName);
+            test.log(Status.FAIL, ScreenShotManager.captureScreenshotAsBase64());
+
+            //screenshot
+        }
     }
 
     @AfterAll
@@ -35,8 +47,8 @@ public class Hooks {
 
     @Before
     public void scenarioCheckIn(Scenario scenario) {
-        String scenarioName = scenario.getName();
-        ReportingManager.extent.createTest(scenarioName);
+        scenarioName = scenario.getName();
+        test = ReportingManager.extent.createTest(scenarioName);
     }
 
 }
