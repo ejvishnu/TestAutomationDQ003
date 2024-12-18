@@ -1,6 +1,16 @@
 package org.utils;
 
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MobileUtils {
+
+
 
   /*The general syntax for using AccessibilityId is:
     //driver.findElement(MobileBy.AccessibilityId("Login Button")).click();
@@ -56,5 +66,20 @@ public class MobileUtils {
 
     */
 
+
+    public void scrollToElement(AndroidDriver driver, By locator, String direction) {
+
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = driver;
+        Map<String, Object> scrollArgs = new HashMap<>();
+        scrollArgs.put("elementId", ((org.openqa.selenium.remote.RemoteWebElement) element).getId());
+        scrollArgs.put("direction", direction);
+        // scrollArgs.put("percent", 3.0);
+        js.executeScript("mobile: scrollGesture", scrollArgs);
+    }
+
+    public void test() {
+        scrollToElement(driver, By.id("com.google:id/targetElement"), "down");
+    }
 
 }
