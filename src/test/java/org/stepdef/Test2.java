@@ -33,6 +33,7 @@ public class Test2 {
                 k++;
             }
         }
+        
         System.out.println(smaller.substring(0, smaller.length() - k));
 
 

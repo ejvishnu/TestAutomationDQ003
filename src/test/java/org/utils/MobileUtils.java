@@ -1,5 +1,7 @@
 package org.utils;
 
+import com.google.common.collect.ImmutableMap;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -66,7 +68,7 @@ public class MobileUtils {
 
     */
 
-
+    AndroidDriver driver;
     public void scrollToElement(AndroidDriver driver, By locator, String direction) {
 
         WebElement element = driver.findElement(locator);
@@ -79,7 +81,23 @@ public class MobileUtils {
     }
 
     public void test() {
-        scrollToElement(driver, By.id("com.google:id/targetElement"), "down");
+        scrollToElement(driver, AppiumBy.id("com.google:id/targetElement"), "down");
+    }
+
+    public void scrollByScreenSizeUsingJS(AndroidDriver driver) {
+        int screenHeight = driver.manage().window().getSize().height;
+        int screenWidth = driver.manage().window().getSize().width;
+        int startX = screenWidth / 2;
+        int startY = (int) (screenHeight * 0.8);
+        int endY = (int) (screenHeight * 0.2);
+        JavascriptExecutor js = driver;
+        js.executeScript("mobile: scrollGesture",
+                ImmutableMap.of(
+                        "startX", startX,
+                        "startY", startY,
+                        "endX", startX,
+                        "endY", endY
+                ));
     }
 
 }

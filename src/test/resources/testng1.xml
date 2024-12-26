@@ -16,6 +16,19 @@
 
         </classes>
     </test>
+    <test name="LoginTest1s">
+        <groups>
+            <run>
+                <include name="regression1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.stepdef.Test1">
+
+            </class>
+
+        </classes>
+    </test>
 
 
 </suite>

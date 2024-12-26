@@ -1,19 +1,19 @@
 package org.stepdef;
 
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-
+@Listeners(TestListener.class)
 public class Test1 {
 
 
-    @Parameters({"browser", "url"})
-    @Test(groups = {"regression1"})
+    @Test
 
-    public void check(String browser, String url) {
+    public void check() {
         // ChromeDriver driver = new ChromeDriver();
-        System.out.println(browser + url);
+        System.out.println("hello");
     }
 
 

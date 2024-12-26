@@ -2,11 +2,8 @@ package org.stepdef;
 
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import io.cucumber.java.*;
-import org.utils.DriverManager;
 import org.utils.ReportingManager;
-import org.utils.ScreenShotManager;
 
 public class Hooks {
 
@@ -33,8 +30,7 @@ public class Hooks {
     @After
     public void scenarioCheckOut(Scenario scenario) {
         if (scenario.isFailed()) {
-            new ScreenShotManager(DriverManager.getDriver()).captureScreenshot(scenarioName);
-            test.log(Status.FAIL, ScreenShotManager.captureScreenshotAsBase64());
+
 
             //screenshot
         }
