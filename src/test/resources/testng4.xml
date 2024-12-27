@@ -4,6 +4,7 @@
     <parameter name="url" value="link"/>
     <listeners>
         <listener class-name="org.stepdef.TestListener"/>
+        <listener class-name="org.stepdef.RetryTransformer"/>
     </listeners>
 
     <test name="LoginTests">
